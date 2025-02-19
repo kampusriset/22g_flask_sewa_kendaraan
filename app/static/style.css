@@ -1,0 +1,203 @@
+.carousel-item img {
+  margin: 0 auto; 
+  display: flex; 
+  
+}
+.nav-item:hover{
+  text-decoration: underline;
+  text-decoration-color: #dd720f;
+  text-decoration-style: solid;
+
+}
+
+#mobil{
+  /* background: linear-gradient(90deg, rgb(33, 33, 33) 0%, rgb(114, 114, 114) 35%, rgb(226, 226, 226) 100%); */
+  background: #626567;
+  font-family: Dosis;
+}
+#img2, #img3{
+  opacity: 100%;
+}
+#img1{
+  opacity: 100%;
+}
+.img1-btn{
+  border-radius: 5px;
+  font-family: 'Dosis',sans-serif;
+  background: #dd720f;
+  color: #F4F9F9;
+  border: #626567;
+  font-size: 30px;
+  left: 0;
+  right: auto;
+  transform:translate(120%,-780%);
+}
+.img1-btn a{
+  color: #F4F9F9;
+  text-decoration: none;
+}
+.navbar-nav{
+  font-family: 'Dosis',sans-serif;
+  font-weight: 500;
+  font-size: larger;
+  gap: 20;
+}
+.navbar-brand{
+  text-shadow: 3px 3px 3px #CCF2F4;
+
+}
+.navbar-brand-data{
+  font-family: 'Dosis',sans-serif;
+  font-weight: 600; 
+  font-size: 30px;
+  padding-left: 2rem;
+  text-decoration: none;
+  color: black;
+}
+.img1-btn:hover{
+  text-decoration: underline;
+}
+.carousel-text-0{
+  
+  left: 0;
+ 
+  right: auto;
+  text-align: left;
+  padding: 0;
+  transform:translate(12%,-470%);
+  font-family: 'Dosis',sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  color: #F4F9F9;
+  display: block;
+  text-shadow: 3px 3px 3px #dd720f;
+}
+.carousel-text-1{
+  left: 0;
+  right: auto;
+  text-align: left;
+  padding: 0;
+  transform:translate(48%,-160%);
+  font-family: 'Dosis',sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-shadow: 3px 3px 3px #F4F9F9;
+  text-shadow: 10px;
+  color: #dd720f;
+  display: block;
+}
+.carousel-text-2{
+  left: 0;
+  right: auto;
+  text-align: left;
+  padding: 0;
+  transform:translate(10%,-130%);
+  font-family: 'Dosis',sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #F4F9F9;
+  display: block;
+  text-shadow: 3px 3px 3px #dd720f;
+}
+#carouselExampleCaptions{
+    /* background: linear-gradient(90deg, rgb(33, 33, 33) 0%, rgb(114, 114, 114) 35%, rgb(226, 226, 226) 100%); */
+    background: #626567;
+    height: 350px; /* Set a fixed height for the carousel */
+    
+    
+}
+.carousel-indicators{
+  transform: translateY(-600%);
+}
+#index-tablehead{
+  background-color: #e9a260;
+}
+.carousel-caption h5{
+    color: whitesmoke; 
+    font-weight: 600;
+    text-decoration-line: underline;
+}
+#navbar{
+  background-color: #F4F9F9;
+}
+.carousel-caption {
+    
+    font-family: sans-serif;
+    
+    font-style: italic;
+    top: 260px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    margin-top: 20px;
+}
+/* body{
+    background: linear-gradient(90deg, rgb(33, 33, 33) 0%, rgb(114, 114, 114) 35%, rgb(226, 226, 226) 100%);
+    
+} */
+.harga-sewa{
+  background: #8D8E8F;
+  
+}
+.label-harga-sewa{
+  color: white;
+  font-family: 'Dosis',sans-serif-bold;
+  font-size: 30px;
+  font-weight: bolder;
+  text-decoration-line: underline;
+}
+table{
+  color: #dd720f;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #CCF2F4;
+}
+.table-title{
+  font-family: 'Dosis',sans-serif;
+  color: #F4F9F9;
+  text-shadow: 3px 3px 3px #dd720f;
+}
+.table-title h2{
+  
+  font-weight: 700;
+
+}
+#carousel-indicators-mobil{
+    top: 348px;
+}
+.site-content{
+  flex: 1;
+}
+#action{
+  font-size: small;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  color: black;
+}
+footer{
+  /* background:linear-gradient(90deg, rgb(33, 33, 33) 0%, rgb(114, 114, 114) 35%, rgb(226, 226, 226) 100%) ; */
+  font-family: 'Dosis',sans-serif;
+  background-color: #dd720f;
+  bottom: 0;
+  width: 100%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* Marina Blue: #0091C9
+Fiery Red: #FF3C00
+Polar White: #FFFFFF
+Typhoon Silver: #8D8E8F
+Twilight Black: #1F2020
+Platinum Silver: #C0C0C0
+Thunder Gray: #626567
+Fountain Blue: #1560BD
+Stellar Blue: #204A87
+Lava Orange: #FF5733 */
