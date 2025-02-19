@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Mobil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    {%block body%}
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+        <div class="container">
+            <img src="{{url_for('static',filename='logosuper.png')}}" class="navbar-brand-logo" width="100" height="100" href="#home" ></img>
+            <a class="navbar-brand-data" href="#" >Admin Page</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2" >
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="{{url_for('Admin')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{url_for('karyawan')}}">Karyawan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('pelanggan')}}">Pelanggan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="{{url_for('rental')}}">Rental</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active"  href="{{url_for('mobil')}}">Mobil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #f3f4f5;">
+                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+    
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section style="background: #8D8E8F;min-height: 700px;">
+        <div class="row justify-content-center" style="padding-right: 8rem;padding: 4rem;padding-top: 8rem;">
+            
+            
+            <div class="col-md-8 justify-content-center p-3">
+                <div class="d-grid gap-2 d-md-flex mb-2 justify-content-start table-title" >
+                    <h2>Data Mobil</h2>
+                </div>
+                <div class="d-grid gap-2 d-md-flex mb-4 justify-content-between" style="font-family: sans-serif-bold;">
+                    <input type="text" id="filter" style="width: 200px; height: 30px;font-size: small;" class="form-control form-control-lg shadow-none" placeholder="Cari data mobil...">
+                    <button class="btn btn-info me-md-2 text-white" type="button" style="font-size: small;" data-toggle="modal" data-target="#mymodal">Tambah</button>
+                    
+                </div>
+                
+                {%with messages = get_flashed_messages()%}
+                {%if messages%}
+                {%for message in messages%}
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> 
+                </div>
+                {%endfor%}
+                {%endif%}
+                {%endwith%}
+                <table class="table table-hover" methods="get" border="1" style="font-family: Poppins;">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Model</th>
+                            <th>Warna</th>
+                            <th>No. Plat</th>
+                            <th>Harga Sewa</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+            
+                    {% for mobil in data_mobil %}
+                    <tbody>
+                        <tr>
+                            <td>{{ mobil[0] }}</td>
+                            <td>{{ mobil[1] }}</td>
+                            <td>{{ mobil[2] }}</td>
+                            <td>{{ mobil[3] }}</td>
+                            <td>{{ mobil[4] }}</td>
+                            <td>
+                                <a href="/update_mobil/{{mobil[0]}}" class="btn btn-warning btn-xs text-white" data-toggle="modal" data-target="#modaledit{{mobil[0]}}">Edit</a>
+                                <a href="/delete/{{mobil[0]}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <div id="modaledit{{mobil[0]}}" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info" >
+                              <h5 class="modal-title text-white" style="align-content: center;">Edit Data</h5>    
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="{{url_for('update_mobil')}}" method="POST">
+                        
+                                <!-- <div class="form-group pb-2">
+                                  <label>Model</label>
+                                    <input type="hidden" name="id" value="{{mobil[0]}}">
+                                    <input type="text" name="merek" value="{{mobil[1]}}" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Model Mobil">
+                                </div> -->
+                                <div class="pb-2">
+                                    <label for="merek" class="form-label">Model</label>
+                                    <input type="hidden" name="id" value="{{mobil[0]}}">
+                                      <select class="form-select" aria-label="Default select example" id="merek" name="merek">
+                                        <option selected name="merek" >{{mobil[1]}}</option>
+                                        <option value="Lamborgini" name="merek" >Lamborgini</option>
+                                        <option value="Ferarri" name="merek" >Ferarri</option>
+                                        <option value="Koenigseg" name="merek" >Koenigseg</option>
+                                        <option value="Bugatti" name="merek" >Bugatti</option>
+                                        <option value="Corvette" name="merek" >Corvette</option>
+                                        <option value="Porche" name="merek" >Porche</option>
+                                      </select>
+                                      
+                                </div>
+          
+                                <!-- <div class="form-group pb-2">
+                                  <label>Warna</label>
+                                  <input type="text" name="warna" value="{{mobil[2]}}" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Warna Mobil">
+                                </div> -->
+                                <div class="pb-2">
+                                    <label for="warna" class="form-label">Warna</label>
+                                      <select class="form-select" aria-label="Default select example" id="warna" name="warna">
+                                        <option selected name="warna" >{{mobil[2]}}</option>
+                                        <option value="Putih"  >Putih</option>
+                                        <option value="Abu-abu"  >Abu-abu</option>
+                                        <option value="Hitam"  >Hitam</option>
+                                        <option value="Merah"  >Merah</option>
+                                      </select>
+                                      
+                                </div>
+                                <div class="form-group pb-2">
+                                  <label>No. Plat</label>
+                                  <input type="text" name="no_plat" value="{{mobil[3]}}" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nomor Plat">
+                                </div>
+                                <div class="form-group pb-5">
+                                  <label>Harga Sewa</label>
+                                  <input type="text" name="harga_sewa" value="{{mobil[4]}}" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Harga Sewa">
+                                </div>
+                                <span class="form-group"></span>
+          
+                                <button type="submit" class="btn btn-info mb-2 text-white">Simpan</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+    
+     <!--mymodal-->
+        <div id="mymodal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info" >
+                    <h5 class="modal-title text-white" style="align-content: center;">Masukkan Data</h5>    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form action="{{url_for('insert_mobil')}}" method="POST">
+                    <div class="form-group pb-2">
+                    <label>Id</label>
+                    <input type="text" name="id" required="1" class="form-control"  placeholder="Masukkan Id">
+                    </div>
+            
+                    <!-- <div class="form-group pb-2">
+                    <label>Model</label>
+                    <input type="text" name="merek" required="1" class="form-control"  placeholder="Masukkan Model Mobil">
+                    </div> -->
+                    <div class="pb-2">
+                        <label for="merek" class="form-label">Model</label>
+                          <select class="form-select" aria-label="Default select example" id="merek" name="merek">
+                            <option selected name="merek" >Pilih Mobil</option>
+                            <option value="Lamborgini" name="merek" >Lamborgini</option>
+                            <option value="Ferarri" name="merek" >Ferarri</option>
+                            <option value="Koenigseg" name="merek" >Koenigseg</option>
+                            <option value="Bugatti" name="merek" >Bugatti</option>
+                            <option value="Corvette" name="merek" >Corvette</option>
+                            <option value="Porche" name="merek" >Porche</option>
+                          </select>
+                          
+                    </div>
+    
+                    <!-- <div class="form-group pb-2">
+                    <label>Warna</label>
+                    <input type="text" name="warna" required="1" class="form-control"  placeholder="Masukkan Warna Mobil">
+                    </div> -->
+                    <div class="pb-2">
+                        <label for="warna" class="form-label">Warna</label>
+                          <select class="form-select" aria-label="Default select example" id="warna" name="warna">
+                            <option selected name="warna" >Pilih Warna</option>
+                            <option value="Putih"  >Putih</option>
+                            <option value="Abu-abu"  >Abu-abu</option>
+                            <option value="Hitam"  >Hitam</option>
+                            <option value="Merah"  >Merah</option>
+                          </select>
+                          
+                    </div>
+    
+                    <div class="form-group pb-2">
+                    <label>No. Plat</label>
+                    <input type="text" name="no_plat" required="1" class="form-control"  placeholder="Masukkan Nomor Plat">
+                    </div>
+                    <div class="form-group pb-5">
+                    <label>Harga Sewa</label>
+                    <input type="text" name="harga_sewa" required="1" class="form-control"  placeholder="Masukkan Harga Sewa">
+                    </div>
+                    <span class="form-group"></span>
+    
+                    <button type="submit" class="btn btn-info mb-2 text-white">Simpan</button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- End MyModal -->
+    <footer id="kontak" class="p-3" >
+        <div class="row">
+            <div class="col-md-1" style="padding-left: 2rem;padding-right: 2rem;">
+                <a href="#home"><img src="{{url_for('static',filename='logosuper.png')}}" alt="footer-logo" width="90" height="90"></a>
+            </div>
+            <div class="col-md-4 text-start " style="padding-left: 4rem;">
+                <div class="row">
+                    <h5 class="text-white">Kontak</h5>
+                    <ul>
+                        <li class="text-white">WhatsApp : +62 812-2560-4346</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+    {%endblock%}
+
+   
+
+
+
+
+
+
+
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

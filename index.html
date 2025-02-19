@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Mobil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        .body{
+            font-family: 'Dosis', sans-serif;
+        }
+    </style>
+</head>
+<body style="background-color: #8D8E8F;">
+    {%block body%}
+    <nav class="navbar navbar-expand-lg shadow-sm fixed-top" id="navbar">
+        <div class="container">
+            <img src="{{url_for('static',filename='logosuper.png')}}" class="navbar-brand" width="100" height="100" href="#home" ></img>
+            <a class="navbar-brand " style="font-family: Dosis; font-weight: 600; font-size: 45px;padding-left: 2rem;color: #dd720f;" href="#home" >Supercar Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto gap-2 mb-2 mb-lg-0" style="font-family: Dosis;font-weight: 500;font-size: larger;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mobil">Mobil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('pesan')}}">Pesan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="#kontak">Kontak</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #f3f4f5;">
+                            <li><a class="dropdown-item" href="{{url_for('login')}}">Admin Login</a></li>
+    
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="home" style="height: 250px;">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" style=" padding-top: 0rem;">
+            <!-- <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div> -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{url_for('static', filename='kuning.jpg')}}" class="d-block w-100" id="img1" alt="home1">
+                    <div class="carousel-text-0">
+                        <p>Selalu Siap Untuk Kencang</p>
+                        
+                    </div>
+                    <button class="img1-btn" href="#mobil"><a href="#mobil">Cari Mobil</a></button>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{url_for('static', filename='lamborghini.jpg')}}" class="d-block w-100" alt="home2" id="img2">
+                    <div class="carousel-text-1">
+                        <p>Temukan Supercar Impian Kalian!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{url_for('static',filename='ferrari.jpg')}}" class="d-block w-100" alt="home4" id="img3">
+                    <div class="carousel-text-2">
+                        <p>Pilihan Mobil Premium Nan Elegan</p>
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{url_for('static',filename='bugatti.jpg')}}" class="d-block w-100" alt="interior">
+                    
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <section id="mobil" class="" style="padding-bottom: 8rem;padding-top: 10rem;">
+        <div class="row text-center mb-3" style="padding-top: 25rem;">
+            <div class="col">
+                <!-- font-family: 'Salsa', cursive; -->
+                <h2 style="color: white;font-size: 35px;font-weight: 700;text-decoration-line: underline;">Model</h2>
+            </div>
+        </div>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators" id="carousel-indicators-mobil">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+                <img src="{{url_for('static',filename='Rlambo.png')}}" class="d-block w-10" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Lamborghini</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static',filename='porsche.png')}}" class="d-block w-10" alt="...">
+                <div class="carousel-caption d-none d-md-block" style="top: 250px;">
+                <h5>Porsche</h5>
+                
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static',filename='mclaren.png')}}" class="d-block w-10" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>McLaren</h5>
+                
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static',filename='ferrari.png')}}" class="d-block w-10" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Ferrari</h5>
+                
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static',filename='bugatti.png')}}" class="d-block w-10" alt="...">
+                <span></span>
+                <div class="carousel-caption d-none d-md-block" style="top: 280px;">
+                <h5>Bugatti</h5>
+                
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static',filename='koenigsegg.png')}}" class="d-block w-10" alt="...">
+                <div class="carousel-caption d-none d-md-block" style="top: 270px;">
+                <h5>Koenigsegg</h5>
+                
+                </div>
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <section style="min-height: 100vh;" class="harga-sewa">
+        <div class="row justify-content-center" style="padding-right: 8rem;padding: 4rem;padding-top: 5rem;">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center label-harga-sewa" >
+                <p>Daftar Harga Sewa</p>
+            </div>
+            <div class="col-md-8 justify-content-center p-3">
+                <input type="text" id="filter" style="width: 200px; height: 30px;font-size: small;" class="form-control form-control-lg shadow-none mb-4 justify-content-end" placeholder="Cari mobil...">
+                <table class="table table-hover" methods="get" border="1" style="font-family: Poppins; border-right: 0cap;border-radius: 8px;">
+                    <thead id="index-tablehead" bgcolor="#626567">
+                        <tr bgcolor="black">
+                            <th>Id</th>
+                            <th>Model</th>
+                            <th>Warna</th>
+                            <th>Harga Sewa</th>
+                        </tr>
+                    </thead>
+            
+                    {% for mobil in data_mobil %}
+                    <tbody id="index-tablebody">
+                        <tr>
+                            <td>{{ mobil[0] }}</td>
+                            <td>{{ mobil[1] }}</td>
+                            <td>{{ mobil[2] }}</td>
+                            <td>{{ mobil[4] }}/hari</td>
+                            
+                        </tr>
+                    </tbody>
+                    {%endfor%}
+                </table>
+            </div>
+
+        </div>
+    </section>
+    <footer id="kontak" class="p-3">
+        <div class="row">
+            <div class="col-md-1" style="padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;">
+                <a href="#home"><img src="{{url_for('static',filename='logosuper.png')}}" alt="footer-logo" width="90" height="90"></a>
+            </div>
+            <div class="col-md-4 text-start " style="padding-left: 4rem;">
+                <div class="row">
+                    <h5 class="text-white">Kontak</h5>
+                    <ul>
+                        <li class="text-white">WhatsApp : +62 812-2560-4346</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    {%endblock%}
+
+   
+
+
+
+
+
+
+
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
