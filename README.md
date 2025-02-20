@@ -1,6 +1,6 @@
 # 22g_flask_sewa_kendaraan
 # Nama Aplikasi
-Supercar Rental 
+Sistem penyewaan kendaraan
 # Kegunaan
 Aplikasi Sistem Manajemen Penyewaan Mobil dirancang untuk membantu admin dalam mengelola proses penyewaan kendaraan secara lebih efektif dan terorganisir. Selain itu, aplikasi ini memungkinkan admin untuk mengelola data karyawan, kendaraan, serta transaksi rental dengan mudah dan akurat. Dengan adanya fitur pencarian, penambahan, pengeditan, dan penghapusan data, aplikasi ini memastikan operasional penyewa berjalan dengan lancar. Dengan menggunakan aplikasi ini, admin dapat meningkatkan efisiensi kerja, mengurangi risiko kesalahan dalam pengelolaan data, serta memastikan layanan penyewaan mobil lebih terstruktur dan profesional.
 
