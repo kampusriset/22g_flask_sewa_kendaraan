@@ -12,8 +12,11 @@ Aplikasi Sistem Manajemen Penyewaan Mobil dirancang untuk membantu admin dalam m
 
 # Tim
 •Bayu Aji Utomo ( Membuat CRUD )
+
 •Riko Ferdiansyah ( Membuat tampilan home dashboard dan page admin
+
 •Soffin Toriq ( Membuat tampilan pemesanan dan membantu dashboard)
+
 •Muhammad Galih ( Membuat tampilan log in )
 # Link dokumentasi (YouTube)
 Anda dapat melihat video dokumentasi melalui link berikut https://youtu.be/YGpm5mH3Eok?feature=shared
